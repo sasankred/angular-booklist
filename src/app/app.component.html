@@ -1,0 +1,39 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ head }}!
+  </h1>
+</div>
+<div class="container">
+  <form #addBookList="ngForm">
+    <div class="form-group">
+    <h1 class="text-center text-primary">Book List</h1>
+      <div class="input-group-prepend">
+        <table>
+          <tr>
+            <td><input type="text" #title class="form-control" placeholder="Add Book Title" name="title" ngModel></td>
+            <td><input type="text" #author class="form-control" placeholder="Add Book Author" name="author" ngModel></td>
+            <td><span class="input-group-text" (click)="addBook(title.value, author.value); addBookList.reset()"><i class="material-icons">add</i></span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="data">
+      <table class="table table-hover">
+        <thead *ngIf="bookList.length>0">
+        <tr>
+          <td>Book Title</td>
+          <td>Book Author</td>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of bookList">
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>
+<router-outlet></router-outlet>
